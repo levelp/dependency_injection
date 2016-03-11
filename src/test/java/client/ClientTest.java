@@ -2,6 +2,8 @@ package client;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import server.Service;
 import server.ServiceExample;
 import server.ServiceSetter;
@@ -58,6 +60,15 @@ public class ClientTest extends Assert {
         // Указываем клиенту какой сервис использовать
         ServiceSetter setter = client;
         setter.setService(service);
+        // Используем клиент
+        assertEquals("Hello Service: ServiceExample", client.greet());
+    }
+
+    @Test
+    public void testConstructorInjectionSpring() {
+        BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
+        // Создаём клиент с помоз
+        Client client = (Client) beanfactory.getBean("client");
         // Используем клиент
         assertEquals("Hello Service: ServiceExample", client.greet());
     }

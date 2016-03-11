@@ -20,6 +20,19 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!-- Spring Context (использует core, aop, beans, expression) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
+        <!-- Библиотека для вывода логов
+         Если не подключить получим: java.lang.NoClassDefFoundError: org/apache/commons/logging/LogFactory -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>

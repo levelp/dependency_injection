@@ -25,6 +25,7 @@ public class Client implements ServiceSetter {
     Client(Service service) {
         // Сохраняем переданный нам сервис
         this.service = service;
+        System.out.println("Client constructor");
     }
 
     // [2] Setter injection - через setter
