@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import server.Service;
 import server.ServiceExample;
+import server.ServiceSetter;
 
 public class ClientTest extends Assert {
     /**
@@ -41,6 +42,22 @@ public class ClientTest extends Assert {
         Client client = new Client();
         // Указываем клиенту какой сервис использовать
         client.setService(service);
+        // Используем клиент
+        assertEquals("Hello Service: ServiceExample", client.greet());
+    }
+
+    /**
+     * [3] Interface injection - используя специальный интерфейс
+     */
+    @Test
+    public void testInterfaceInjection() {
+        // Создаём клиент
+        Client client = new Client();
+        // Создаём сервис
+        Service service = new ServiceExample();
+        // Указываем клиенту какой сервис использовать
+        ServiceSetter setter = client;
+        setter.setService(service);
         // Используем клиент
         assertEquals("Hello Service: ServiceExample", client.greet());
     }

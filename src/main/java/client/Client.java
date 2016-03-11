@@ -2,6 +2,7 @@ package client;
 
 import server.Service;
 import server.ServiceExample;
+import server.ServiceSetter;
 
 // Пример без использования Dependency injection:
 // Клиент напрямую управляет созданием сервиса, к которому потом обращается (владеет им)
@@ -10,7 +11,7 @@ import server.ServiceExample;
 //  [1] Constructor injection - передаём объект как параметр конструктора
 //  [2] Setter injection - через setter
 //  [3] Interface injection - используя специальный интерфейс
-public class Client {
+public class Client implements ServiceSetter {
     // Внутренняя ссылка на сервис, используемый этим клиентом
     private Service service;
 
@@ -27,6 +28,8 @@ public class Client {
     }
 
     // [2] Setter injection - через setter
+    // [3] Interface injection - используя специальный интерфейс
+    @Override
     public void setService(Service service) {
         this.service = service;
     }
