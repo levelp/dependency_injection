@@ -28,4 +28,20 @@ public class ClientTest extends Assert {
         // Используем клиент
         assertEquals("Hello Service: ServiceExample", client.greet());
     }
+
+    /**
+     * [2] Setter injection - через setter
+     */
+    @Test
+    public void testSetterInjection() {
+        // Создаём сначала сервис (от него зависит клиент)
+        // IoC-контейнер разбирает дерево зависимостей
+        Service service = new ServiceExample();
+        // Теперь создаём клиент
+        Client client = new Client();
+        // Указываем клиенту какой сервис использовать
+        client.setService(service);
+        // Используем клиент
+        assertEquals("Hello Service: ServiceExample", client.greet());
+    }
 }

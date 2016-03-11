@@ -26,6 +26,11 @@ public class Client {
         this.service = service;
     }
 
+    // [2] Setter injection - через setter
+    public void setService(Service service) {
+        this.service = service;
+    }
+
     // Пример метода, который использует сервис
     public String greet() {
         return "Hello " + this.service.getName();
