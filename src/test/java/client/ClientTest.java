@@ -67,9 +67,27 @@ public class ClientTest extends Assert {
     @Test
     public void testConstructorInjectionSpring() {
         BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
-        // Создаём клиент с помоз
+        // Создаём клиент с помощью Spring
         Client client = (Client) beanfactory.getBean("client");
         // Используем клиент
         assertEquals("Hello Service: ServiceExample", client.greet());
+    }
+
+    @Test
+    public void testSetterInjectionSpring() {
+        BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
+        // Создаём клиент с помощью Spring
+        Client client = (Client) beanfactory.getBean("client2");
+        // Используем клиент
+        assertEquals("Hello Service: ServiceExample", client.greet());
+    }
+
+    @Test
+    public void testAutowiredSpring() {
+        BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
+        // Создаём объект Spring
+        AutowiredDemo autowiredDemo = (AutowiredDemo) beanfactory.getBean("complex");
+        // Используем клиент
+        assertEquals("Hello Service: ServiceExample", autowiredDemo.callClient());
     }
 }

@@ -33,6 +33,7 @@ public class Client implements ServiceSetter {
     @Override
     public void setService(Service service) {
         this.service = service;
+        System.out.println("Client.setService");
     }
 
     // Пример метода, который использует сервис
