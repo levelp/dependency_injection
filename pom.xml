@@ -14,6 +14,21 @@
         <java-version>1.8</java-version>
     </properties>
 
+    <!-- Платформа Spring IO: помогает подобрать
+  совместимую комбинацию версий для Spring-библиотек.
+   http://spring-projects.ru/platform/ -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -24,14 +39,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>RELEASE</version>
         </dependency>
         <!-- Библиотека для вывода логов
          Если не подключить получим: java.lang.NoClassDefFoundError: org/apache/commons/logging/LogFactory -->
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>RELEASE</version>
         </dependency>
     </dependencies>
 
