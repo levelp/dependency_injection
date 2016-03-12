@@ -12,20 +12,29 @@ import server.ServiceSetter;
 //  [2] Setter injection - через setter
 //  [3] Interface injection - используя специальный интерфейс
 public class Client implements ServiceSetter {
+    // Счётчик объектов
+    static int count = 0;
+    // Идентификатор объекта
+    int id = ++count;
     // Внутренняя ссылка на сервис, используемый этим клиентом
     private Service service;
 
-    // Конструктор
-    Client() {
+    // Конструктор без DI со специальным сообщением
+    Client(String message) {
+        System.out.println("Client #" + id + " constructor: " + message);
         // Указываем конкретную реализацию сервиса вместо использования Dependency Injection
         this.service = new ServiceExample();
+    }
+
+    Client() {
+        System.out.printf("Client #%d default constructor%n", id);
     }
 
     // 1. Constructor injection
     Client(Service service) {
         // Сохраняем переданный нам сервис
         this.service = service;
-        System.out.println("Client constructor");
+        System.out.println("Client #" + id + " service constructor");
     }
 
     // [2] Setter injection - через setter

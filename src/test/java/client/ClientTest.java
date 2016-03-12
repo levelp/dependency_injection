@@ -14,7 +14,7 @@ public class ClientTest extends Assert {
      */
     @Test
     public void testClient() {
-        Client client = new Client();
+        Client client = new Client("Без использования Dependency injection");
         assertEquals("Hello Service: ServiceExample", client.greet());
     }
 
@@ -87,7 +87,21 @@ public class ClientTest extends Assert {
         BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
         // Создаём объект Spring
         AutowiredDemo autowiredDemo = (AutowiredDemo) beanfactory.getBean("complex");
+        Client client1 = (Client) beanfactory.getBean("client");
+        Client client2 = (Client) beanfactory.getBean("client2");
         // Используем клиент
         assertEquals("Hello Service: ServiceExample", autowiredDemo.callClient());
+        assertEquals("Hello Service: ServiceExample", client1.greet());
+        assertEquals("Hello Service: ServiceExample", client2.greet());
     }
+
+    @Test
+    public void testOtherClientSpring() {
+        BeanFactory beanfactory = new ClassPathXmlApplicationContext("beans.xml");
+        // Создаём объект Spring
+        OtherClient otherClient = (OtherClient) beanfactory.getBean("otherClient");
+        // Используем клиент
+        otherClient.doSomething();
+    }
+
 }

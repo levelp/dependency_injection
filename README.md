@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/levelp/dependency_injection.svg?branch=master)](https://travis-ci.org/levelp/dependency_injection)
+[![Coverage Status](https://coveralls.io/repos/github/levelp/dependency_injection/badge.svg?branch=master)](https://coveralls.io/github/levelp/dependency_injection?branch=master)
+
 Dependency Injection в Java
 ===========================
 

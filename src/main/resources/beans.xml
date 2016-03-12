@@ -18,4 +18,27 @@
     </bean>
     <bean id="complex" class="client.AutowiredDemo">
     </bean>
+    <bean id="otherClient" class="client.OtherClient">
+        <property name="myService" ref="service"/>
+    </bean>
+    <!-- Пример с точками и отрезками -->
+    <bean id="pointA" class="geometry.Point">
+        <property name="name" value="A"/>
+        <property name="x" value="10"/>
+        <property name="y" value="20"/>
+    </bean>
+    <bean id="pointB" class="geometry.Point">
+        <property name="name" value="B"/>
+        <property name="x" value="5"/>
+        <property name="y" value="2"/>
+    </bean>
+    <bean id="line1" class="geometry.Line">
+    </bean>
+    <bean id="line2" class="geometry.Line">
+        <property name="A" ref="pointB"/>
+        <property name="B" ref="pointA"/>
+    </bean>
+
+    <bean id="logger" class="server.MyLogger">
+    </bean>
 </beans>
