@@ -5,6 +5,11 @@ import server.ServiceExample;
 
 // Пример без использования Dependency injection:
 // Клиент напрямую управляет созданием сервиса, к которому потом обращается (владеет им)
+//
+// Разберём 3 вида Dependency injection:
+//  [1] Constructor injection - передаём объект как параметр конструктора
+//  [2] Setter injection - через setter
+//  [3] Interface injection - используя специальный интерфейс
 public class Client {
     // Внутренняя ссылка на сервис, используемый этим клиентом
     private Service service;
@@ -13,6 +18,12 @@ public class Client {
     Client() {
         // Указываем конкретную реализацию сервиса вместо использования Dependency Injection
         this.service = new ServiceExample();
+    }
+
+    // 1. Constructor injection
+    Client(Service service) {
+        // Сохраняем переданный нам сервис
+        this.service = service;
     }
 
     // Пример метода, который использует сервис
